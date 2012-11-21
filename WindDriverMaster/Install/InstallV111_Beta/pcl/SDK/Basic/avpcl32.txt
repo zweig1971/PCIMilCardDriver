@@ -1,0 +1,700 @@
+'****************************************************************************
+'*                                                                          *
+'*  Declarations of Windows DLL AVPCL32.DLL for Visual Basic                *
+'*                                                                          *
+'*  Copyright (c) 1995-2007 by Alpermann+Velte                              *
+'*                                                                          *
+'****************************************************************************
+
+' <avpcl32.txt> Alpermann+Velte DLL for AV-PCL
+' @(#)avpcl32.txt 3.36 06/14/2007 (c) 1995-2007 Alpermann+Velte
+
+' For documentation see avpcl.h
+
+'****************************************************************************
+
+Public Const PCL_VER_DLL = &H0324 // 3.36
+
+'****************************************************************************
+
+Public Const PCL_OK = 0
+Public Const PCL_NO_NEWD = 1
+Public Const PCL_ERR_INV_PORT = -1
+Public Const PCL_ERR_NOT_FOUND = -2
+Public Const PCL_ERR_NO_HANDLE = -3
+Public Const PCL_ERR_INV_HDL = -4
+Public Const PCL_ERR_NOTOPEN = -5
+Public Const PCL_ERR_NULL = -6
+Public Const PCL_ERR_TIMEOUT = -7
+Public Const PCL_ERR_INV_REG = -8
+Public Const PCL_ERR_INV_BANK = -9
+Public Const PCL_ERR_RANGE = -10
+Public Const PCL_ERR_INIT = -11
+Public Const PCL_ERR_IOCTL = -12
+Public Const PCL_ERR_VER = -13
+Public Const PCL_ERR_NOT_SUPP = -14
+Public Const PCL_ERR_UK_CMD = -15
+Public Const PCL_ERR_OPEN = -16
+
+'****************************************************************************
+
+Public Const PCL_HANDLES = 10
+
+Public Const PCL_REQ_ASYN = &H80
+Public Const PCL_REQ_SYNC = &H40
+Public Const PCL_REQ_PERM = &H20
+
+'****************************************************************************
+
+Declare Function pclOpen Lib "AVPCL32" (ByRef hdl As Long, ByVal base As Long) As Long
+
+Public Const PCL_BASE_PCI_OFS = &H1000
+Public Const PCL_BASE_PCI_1 = &H1001
+Public Const PCL_BASE_PCI_2 = &H1002
+Public Const PCL_BASE_PCI_3 = &H1003
+Public Const PCL_BASE_PCI_4 = &H1004
+Public Const PCL_BASE_PCI_5 = &H1005
+Public Const PCL_BASE_PCI_6 = &H1006
+Public Const PCL_BASE_PCI_7 = &H1007
+Public Const PCL_BASE_PCI_8 = &H1008
+Public Const PCL_BASE_PCI_9 = &H1009
+Public Const PCL_BASE_PCI_10 = &H100A
+Public Const PCL_BASE_PCI_LAST = &H100A
+
+Public Const PCL_BASE_0 = &H200
+Public Const PCL_BASE_1 = &H220
+Public Const PCL_BASE_2 = &H240
+Public Const PCL_BASE_FACTORY = &H240
+Public Const PCL_BASE_3 = &H260
+Public Const PCL_BASE_4 = &H280
+Public Const PCL_BASE_5 = &H2A0
+Public Const PCL_BASE_6 = &H2C0
+Public Const PCL_BASE_7 = &H2E0
+Public Const PCL_BASE_8 = &H300
+Public Const PCL_BASE_9 = &H320
+Public Const PCL_BASE_A = &H340
+Public Const PCL_BASE_B = &H360
+Public Const PCL_BASE_C = &H380
+Public Const PCL_BASE_D = &H3A0
+Public Const PCL_BASE_E = &H3C0
+Public Const PCL_BASE_F = &H3E0
+
+'****************************************************************************
+
+Declare Function pclClose Lib "AVPCL32" (ByVal hdl As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclGetTc Lib "AVPCL32" (ByVal hdl As Long, ByRef time As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclGetUser Lib "AVPCL32" (ByVal hdl As Long, ByRef user As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclGetRegister Lib "AVPCL32" (ByVal hdl As Long, ByVal reg As Long, ByRef time As Long, ByRef bits As Long, ByRef user As Long, ByRef frame As Long, ByRef newd As Long) As Long
+
+Public Const PCL_REG_MIXED = &H0
+Public Const PCL_REG_CTL = &H1
+Public Const PCL_REG_LTC = &H2
+Public Const PCL_REG_VITC = &H3
+Public Const PCL_REG_MIXED2 = &H4
+Public Const PCL_REG_CTL2 = &H5
+Public Const PCL_REG_LTC2 = &H6
+Public Const PCL_REG_VITC2 = &H7
+Public Const PCL_REG_EVENT = &H8
+Public Const PCL_REG_EVENT2 = &H9
+Public Const PCL_REG_TRAN = &HA
+Public Const PCL_REG_STATUS = &HB
+Public Const PCL_REG_IO = &HC
+Public Const PCL_REG_SERIN = &HD
+Public Const PCL_REG_SHIFT = &HE
+Public Const PCL_REG_CMD = &HF
+Public Const PCL_REG_BANK = &H10
+
+Public Const PCL_FRAME_24 = &H24
+Public Const PCL_FRAME_25 = &H25
+Public Const PCL_FRAME_30 = &H30
+Public Const PCL_FRAME_30DF = &HB0
+
+Public Const PCL_BITS_CTL_SIGN = &H40
+Public Const PCL_BITS_CTL_DIR = &H80
+Public Const PCL_BITS_LTC_10 = &H1
+Public Const PCL_BITS_LTC_DROP = &H1
+Public Const PCL_BITS_LTC_11 = &H2
+Public Const PCL_BITS_LTC_CF = &H2
+Public Const PCL_BITS_LTC_27 = &H4
+Public Const PCL_BITS_LTC_43 = &H8
+Public Const PCL_BITS_LTC_58 = &H10
+Public Const PCL_BITS_LTC_59 = &H20
+Public Const PCL_BITS_LTC_WHEEL = &H40
+Public Const PCL_BITS_LTC_DIR = &H80
+
+Public Const PCL_BITS_VITC_14 = &H1
+Public Const PCL_BITS_VITC_DROP = &H1
+Public Const PCL_BITS_VITC_15 = &H2
+Public Const PCL_BITS_VITC_CF = &H2
+Public Const PCL_BITS_VITC_35 = &H4
+Public Const PCL_BITS_VITC_NF = &H4
+Public Const PCL_BITS_VITC_55 = &H8
+Public Const PCL_BITS_VITC_74 = &H10
+Public Const PCL_BITS_VITC_75 = &H20
+Public Const PCL_BITS_VITC_PF = &H20
+Public Const PCL_BITS_VITC_WHEEL = &H40
+
+Public Const PCL_NEWD_NONE = &H0
+Public Const PCL_NEWD_VITC = &H80
+Public Const PCL_NEWD_LTC = &H40
+Public Const PCL_NEWD_CTL = &H20
+
+'****************************************************************************
+
+Declare Function pclGetRegSync Lib "AVPCL32" (ByVal hdl As Long, ByVal reg As Long, ByRef time As Long, ByRef bits As Long, ByRef user As Long, ByRef frame As Long, ByRef newd As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclGetVersion Lib "AVPCL32" (ByVal hdl As Long, ByRef ident As Long, ByRef firmware As Long, ByRef dll As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclGetVerSpecial Lib "AVPCL32" (ByVal hdl As Long, ByRef ident1 As Long, ByRef ident2 As Long, ByRef ident3 As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclReset Lib "AVPCL32" (ByVal hdl As Long, ByVal imode As Long) As Long
+
+Public Const PCL_IMODE_NORMAL = &H0
+Public Const PCL_IMODE_SONY9S = &H1
+Public Const PCL_IMODE_JVC9S = &H2
+Public Const PCL_IMODE_JVC45 = &H3
+Public Const PCL_IMODE_PANA34 = &H4
+Public Const PCL_IMODE_PANA25 = &H5
+Public Const PCL_IMODE_SONY9 = &H6
+Public Const PCL_IMODE_JVC9 = &H7
+Public Const PCL_IMODE_SONY33 = &H8
+Public Const PCL_IMODE_JVC25 = &H9
+Public Const PCL_IMODE_TEST = &HF0
+
+'****************************************************************************
+
+Declare Function pclIntMask Lib "AVPCL32" (ByVal hdl As Long, ByVal imask As Long) As Long
+
+Public Const PCL_IMASK_NONE = &H0
+Public Const PCL_IMASK_MIXED = &H1
+Public Const PCL_IMASK_CTL = &H2
+Public Const PCL_IMASK_LTC = &H4
+Public Const PCL_IMASK_VITC = &H8
+Public Const PCL_IMASK_ETIME = &H10
+Public Const PCL_IMASK_EUSER = &H20
+
+'****************************************************************************
+
+Declare Function pclSetIntMask Lib "AVPCL32" (ByVal hdl As Long, ByVal imask As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclResetIntMask Lib "AVPCL32" (ByVal hdl As Long, ByVal imask As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclReaderEnable Lib "AVPCL32" (ByVal hdl As Long, ByVal rmask As Long) As Long
+
+Public Const PCL_RMASK_NONE = &H0
+Public Const PCL_RMASK_CTL = &H1
+Public Const PCL_RMASK_LTC = &H2
+Public Const PCL_RMASK_VITC = &H4
+Public Const PCL_RMASK_ATC_LTC = &H100
+Public Const PCL_RMASK_ATC_VITC1 = &H200
+Public Const PCL_RMASK_ATC_VITC2 = &H400
+Public Const PCL_RMASK_HANC_LTC = &H800
+Public Const PCL_RMASK_HANC_VITC = &H1000
+Public Const PCL_RMASK_ALL = &H1F06
+
+'****************************************************************************
+
+Declare Function pclVitcSetup Lib "AVPCL32" (ByVal hdl As Long, ByVal line1 As Long, ByVal line2 As Long, ByVal vline As Long) As Long
+
+Public Const PCL_VLINE_2LINES = &H00
+Public Const PCL_VLINE_BLOCK = &H01
+
+'****************************************************************************
+
+Declare Function pclMixedEnable Lib "AVPCL32" (ByVal hdl As Long, ByVal rmask As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclPriority Lib "AVPCL32" (ByVal hdl As Long, ByVal prior As Long) As Long
+
+Public Const PCL_PRIOR_VLC = &H1
+Public Const PCL_PRIOR_LVC = &H2
+
+'****************************************************************************
+
+Declare Function pclTcFrames Lib "AVPCL32" (ByVal hdl As Long, ByVal tcfr As Long) As Long
+
+Public Const PCL_TCFR_AUTO = &H0
+Public Const PCL_TCFR_24 = &H1
+Public Const PCL_TCFR_25 = &H2
+Public Const PCL_TCFR_30 = &H3
+Public Const PCL_TCFR_30DF = &H4
+
+'****************************************************************************
+
+Public Declare Function pclLtcFrames Lib "AVPCL32" (ByVal hdl As Long, ByVal ltcfr As Long) As Long
+
+'****************************************************************************
+
+Public Declare Function pclVitcFrames Lib "AVPCL32" (ByVal hdl As Long, ByVal vitcfr As Long) As Long
+
+'****************************************************************************
+
+Public Declare Function pclVitcLevelControl Lib "AVPCL32" (ByVal hdl As Long, ByVal vlmode As Long, ByVal vlev As Long, ByRef vlret As Long) As Long
+
+Public Const PCL_VLMODE_AUTO = &H00
+Public Const PCL_VLMODE_AUTO_SET = &H01
+Public Const PCL_VLMODE_AUTO_INIT = &H02
+Public Const PCL_VLMODE_OFF = &H03
+Public Const PCL_VLMODE_OFF_SET = &H04
+
+Public Const PCL_VLEV_MIN = &H00
+Public Const PCL_VLEV_MAX = &H45
+
+'****************************************************************************
+
+Public Declare Function pclLtcError Lib "AVPCL32" (ByVal hdl As Long, ByVal ecmode As Long, ByRef ecval As Long) As Long
+
+Public Const PCL_ECMODE_GET_RESET = &H00
+Public Const PCL_ECMODE_GET = &H01
+
+'****************************************************************************
+
+Public Declare Function pclVitcError Lib "AVPCL32" (ByVal hdl As Long, ByVal ecmode As Long, ByRef ecval As Long) As Long
+
+'****************************************************************************
+
+Public Declare Function pclFlyWheel Lib "AVPCL32" (ByVal hdl As Long, ByVal fwmode As Long) As Long
+
+Public Const PCL_FWMODE_OFF = &H00
+Public Const PCL_FWMODE_LTC = &H02
+Public Const PCL_FWMODE_VITC = &H04
+Public Const PCL_FWMODE_ALL = &H06
+
+'****************************************************************************
+
+Public Declare Function pclAtcLtcError Lib "AVPCL32" (ByVal hdl As Long, ByVal ecmode As Long, ByRef ecval As Long) As Long
+
+'****************************************************************************
+
+Public Declare Function pclAtcVitc1Error Lib "AVPCL32" (ByVal hdl As Long, ByVal ecmode As Long, ByRef ecval As Long) As Long
+
+'****************************************************************************
+
+Public Declare Function pclAtcVitc2Error Lib "AVPCL32" (ByVal hdl As Long, ByVal ecmode As Long, ByRef ecval As Long) As Long
+
+'****************************************************************************
+
+Public Declare Function pclHancLtcError Lib "AVPCL32" (ByVal hdl As Long, ByVal ecmode As Long, ByRef ecval As Long) As Long
+
+'****************************************************************************
+
+Public Declare Function pclHancVitcError Lib "AVPCL32" (ByVal hdl As Long, ByVal ecmode As Long, ByRef ecval As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclTc2Bcd Lib "AVPCL32" (ByVal hours As Long, ByVal minutes As Long, ByVal seconds As Long, ByVal frames As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclBcd2Tc Lib "AVPCL32" (ByVal time As Long, ByRef hours As Long, ByRef minutes As Long, ByRef seconds As Long, ByRef frames As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclTc2Frames Lib "AVPCL32" (ByVal time As Long, ByVal frate As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclGetErrorString() As String
+
+'****************************************************************************
+'*                                                                          *
+'* Obsolete Functions                                                       *
+'*                                                                          *
+'****************************************************************************
+
+' The following declaration are only for backward campatibility to the
+' ISA version 2.xx of the DLL.  With this PCI version 3.xx, any of these
+' function will return PCL_ERR_NOT_SUPP.
+
+'****************************************************************************
+
+Declare Function pclGetBaseAddress Lib "AVPCL32" (ByVal index As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclGetEvent Lib "AVPCL32" (ByVal hdl As Long, ByRef dist1 As Long, ByRef dist2 As Long, ByRef dist3 As Long, ByRef evtc As Long, ByRef evub As Long, ByRef eflg As Long) As Long
+
+Public Const PCL_EVTC_FRU = &H1
+Public Const PCL_EVTC_FRT = &H2
+Public Const PCL_EVTC_SEU = &H4
+Public Const PCL_EVTC_SET = &H8
+Public Const PCL_EVTC_MIN = &H10
+Public Const PCL_EVTC_HOU = &H20
+Public Const PCL_EVTC_SIG12 = &H40
+Public Const PCL_EVTC_SIG = &H80
+
+Public Const PCL_EVUB_UB1 = &H1
+Public Const PCL_EVUB_UB2 = &H2
+Public Const PCL_EVUB_UB3 = &H4
+Public Const PCL_EVUB_UB4 = &H8
+Public Const PCL_EVUB_UB5 = &H10
+Public Const PCL_EVUB_UB6 = &H20
+Public Const PCL_EVUB_UB7 = &H40
+Public Const PCL_EVUB_UB8 = &H80
+
+Public Const PCL_EFLG_UMASK = &HF
+Public Const PCL_EFLG_TMASK = &HF0
+
+'****************************************************************************
+
+Declare Function pclGetTransfer Lib "AVPCL32" (ByVal hdl As Long, ByRef tran() As Byte) As Long
+
+'****************************************************************************
+
+Declare Function pclGetIo Lib "AVPCL32" (ByVal hdl As Long, ByRef oprt As Long, ByRef ana As Long, ByRef iprt As Integer) As Long
+
+Public Const PCL_OPRT_1 = &H1
+Public Const PCL_OPRT_2 = &H2
+Public Const PCL_OPRT_3 = &H4
+Public Const PCL_OPRT_4 = &H8
+Public Const PCL_OPRT_5 = &H10
+Public Const PCL_OPRT_6 = &H20
+Public Const PCL_OPRT_7 = &H40
+Public Const PCL_OPRT_8 = &H80
+Public Const PCL_OPRT_9 = &H100
+Public Const PCL_OPRT_10 = &H200
+Public Const PCL_OPRT_11 = &H400
+Public Const PCL_OPRT_12 = &H800
+Public Const PCL_OPRT_13 = &H1000
+Public Const PCL_OPRT_14 = &H2000
+Public Const PCL_OPRT_15 = &H4000
+Public Const PCL_OPRT_16 = &H8000
+Public Const PCL_OPRT_17 = &H10000
+Public Const PCL_OPRT_18 = &H20000
+Public Const PCL_OPRT_19 = &H40000
+Public Const PCL_OPRT_20 = &H80000
+Public Const PCL_OPRT_21 = &H100000
+Public Const PCL_OPRT_22 = &H200000
+Public Const PCL_OPRT_23 = &H400000
+Public Const PCL_OPRT_24 = &H800000
+
+Public Const PCL_IPRT_1 = &H1
+Public Const PCL_IPRT_2 = &H2
+Public Const PCL_IPRT_3 = &H4
+Public Const PCL_IPRT_4 = &H8
+Public Const PCL_IPRT_5 = &H10
+Public Const PCL_IPRT_6 = &H20
+Public Const PCL_IPRT_7 = &H40
+Public Const PCL_IPRT_8 = &H80
+Public Const PCL_IPRT_9 = &H100
+Public Const PCL_IPRT_10 = &H200
+Public Const PCL_IPRT_11 = &H400
+Public Const PCL_IPRT_12 = &H800
+Public Const PCL_IPRT_13 = &H1000
+Public Const PCL_IPRT_14 = &H2000
+Public Const PCL_IPRT_15 = &H4000
+
+'****************************************************************************
+
+Declare Function pclSioCmd Lib "AVPCL32" (ByVal hdl As Long, ByVal scmd As Long) As Long
+
+Public Const PCL_SCMD_RDIS = &H0
+Public Const PCL_SCMD_RENA = &H1
+Public Const PCL_SCMD_NONE = &H0
+Public Const PCL_SCMD_ODD = &H20
+Public Const PCL_SCMD_EVEN = &H60
+Public Const PCL_SCMD_MARK = &HA0
+Public Const PCL_SCMD_SPACE = &HE0
+
+'****************************************************************************
+
+Declare Function pclSioCtl Lib "AVPCL32" (ByVal hdl As Long, ByVal sctl As Long) As Long
+
+Public Const PCL_SCTL_38400 = &H0
+Public Const PCL_SCTL_50 = &H1
+Public Const PCL_SCTL_75 = &H2
+Public Const PCL_SCTL_110 = &H3
+Public Const PCL_SCTL_135 = &H4
+Public Const PCL_SCTL_150 = &H5
+Public Const PCL_SCTL_300 = &H6
+Public Const PCL_SCTL_600 = &H7
+Public Const PCL_SCTL_1200 = &H8
+Public Const PCL_SCTL_1800 = &H9
+Public Const PCL_SCTL_2400 = &HA
+Public Const PCL_SCTL_3600 = &HB
+Public Const PCL_SCTL_4800 = &HC
+Public Const PCL_SCTL_7200 = &HD
+Public Const PCL_SCTL_9600 = &HE
+Public Const PCL_SCTL_19200 = &HF
+Public Const PCL_SCTL_RS232 = &H0
+Public Const PCL_SCTL_RS422 = &H10
+Public Const PCL_SCTL_B8 = &H0
+Public Const PCL_SCTL_B7 = &H20
+Public Const PCL_SCTL_B6 = &H40
+Public Const PCL_SCTL_B5 = &H60
+Public Const PCL_SCTL_S1 = &H0
+Public Const PCL_SCTL_S2 = &H80
+
+'****************************************************************************
+
+Declare Function pclGetSio Lib "AVPCL32" (ByVal hdl As Long, ByRef ssta As Long, ByRef scmd As Long, ByRef sctl As Long) As Long
+
+Public Const PCL_SSTA_PARITY = &H1
+Public Const PCL_SSTA_FRAMING = &H2
+Public Const PCL_SSTA_OVERRUN = &H4
+Public Const PCL_SSTA_RFULL = &H8
+Public Const PCL_SSTA_TEMPTY = &H10
+Public Const PCL_SSTA_RS232 = &H0
+Public Const PCL_SSTA_RS422 = &H20
+Public Const PCL_SSTA_DSR = &H40
+Public Const PCL_SSTA_IRQ = &H80
+
+'****************************************************************************
+
+Declare Function pclGetTrans Lib "AVPCL32" (ByVal hdl As Long, ByRef strf As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclResetTrans Lib "AVPCL32" (ByVal hdl As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclGetSerIn Lib "AVPCL32" (ByVal hdl As Long, ByRef sind() As Byte, ByRef srcv As Long, ByRef count As Long) As Long
+
+Public Const PCL_SRCV_PARITY = &H1
+Public Const PCL_SRCV_FRAMING = &H2
+Public Const PCL_SRCV_OVERRUN = &H4
+Public Const PCL_SRCV_IBUFOV = &H8
+Public Const PCL_SRCV_MBUFOV = &H10
+
+'****************************************************************************
+
+Declare Function pclGetShift Lib "AVPCL32" (ByVal hdl As Long, ByRef shou As Long, ByRef shin As Long, ByRef shst As Long) As Long
+
+Public Const PCL_SHST_INEWD = &H1
+Public Const PCL_SHST_OENA = &H80
+
+'****************************************************************************
+
+Declare Function pclRawCommand Lib "AVPCL32" (ByVal hdl As Long, ByVal cmd As Long, ByRef cdat() As Byte) As Long
+
+'****************************************************************************
+
+Declare Function pclDataReq Lib "AVPCL32" (ByVal hdl As Long, ByVal reg As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclCtlRate Lib "AVPCL32" (ByVal hdl As Long, ByVal ctlrate As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclCtlCount Lib "AVPCL32" (ByVal hdl As Long, ByVal frps As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclCtlMode Lib "AVPCL32" (ByVal hdl As Long, ByVal cmode As Long) As Long
+
+Public Const PCL_CMODE_UNSIGNED = &H0
+Public Const PCL_CMODE_SIGNED = &H1
+
+'****************************************************************************
+
+Declare Function pclCtlReset Lib "AVPCL32" (ByVal hdl As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclCtlPreset Lib "AVPCL32" (ByVal hdl As Long, ByVal time As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclCtlDir Lib "AVPCL32" (ByVal hdl As Long, ByVal cdir As Long) As Long
+
+Public Const PCL_CDIR_REV = &H0
+Public Const PCL_CDIR_FWD = &H1
+
+'****************************************************************************
+
+Declare Function pclEventTime Lib "AVPCL32" (ByVal hdl As Long, ByVal time As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclEventUser Lib "AVPCL32" (ByVal hdl As Long, ByVal user As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclTranBank Lib "AVPCL32" (ByVal hdl As Long, ByVal bank As Long, ByRef tstr() As Byte) As Long
+
+'****************************************************************************
+
+Declare Function pclRecMode Lib "AVPCL32" (ByVal hdl As Long, ByVal rmode As Long) As Long
+
+Public Const PCL_RMODE_NORMAL = &H0
+Public Const PCL_RMODE_SONY = &H1
+Public Const PCL_RMODE_PANA = &H0
+
+'****************************************************************************
+
+Declare Function pclTranStr Lib "AVPCL32" (ByVal hdl As Long, ByVal num As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclTranData Lib "AVPCL32" (ByVal hdl As Long, ByVal num As Long, ByRef tdat() As Byte) As Long
+
+'****************************************************************************
+
+Declare Function pclModeOut Lib "AVPCL32" (ByVal hdl As Long, ByVal omode As Long, ByVal freq As Integer) As Long
+
+Public Const PCL_OMODE_NORMAL = &H0
+Public Const PCL_OMODE_FREQ = &H1
+
+'****************************************************************************
+
+Declare Function pclOutPort Lib "AVPCL32" (ByVal hdl As Long, ByVal oprt As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclPortHigh Lib "AVPCL32" (ByVal hdl As Long, ByVal oprt As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclPortLow Lib "AVPCL32" (ByVal hdl As Long, ByVal oprt As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclPosPulse Lib "AVPCL32" (ByVal hdl As Long, ByVal oprt As Long, ByVal pmode As Long, ByVal pwidth As Long) As Long
+
+Public Const PCL_PMODE_INDIV = &H0
+Public Const PCL_PMODE_SAME = &H1
+
+'****************************************************************************
+
+Declare Function pclNegPulse Lib "AVPCL32" (ByVal hdl As Long, ByVal oprt As Long, ByVal pmode As Long, ByVal pwidth As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclPosPulseOut Lib "AVPCL32" (ByVal hdl As Long, ByVal oprt As Long, ByVal pwidth As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclNegPulseOut Lib "AVPCL32" (ByVal hdl As Long, ByVal oprt As Long, ByVal pwidth As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclPulseWidth Lib "AVPCL32" (ByVal hdl As Long, ByVal oprt As Long, ByVal pwidth As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclAnalogOut Lib "AVPCL32" (ByVal hdl As Long, ByVal value As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclShiftData Lib "AVPCL32" (ByVal hdl As Long, ByVal shou As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclShiftWidth Lib "AVPCL32" (ByVal hdl As Long, ByVal swid As Long) As Long
+
+Public Const PCL_SWID_8 = &H0
+Public Const PCL_SWID_16 = &H1
+Public Const PCL_SWID_24 = &H2
+Public Const PCL_SWID_32 = &H3
+
+'****************************************************************************
+
+Declare Function pclShiftMode Lib "AVPCL32" (ByVal hdl As Long, ByVal smod As Long) As Long
+
+Public Const PCL_SMODE_DIS = &H80
+Public Const PCL_SMODE_ONE = &H0
+Public Const PCL_SMODE_CONT = &H1
+
+'****************************************************************************
+
+Declare Function pclRecCtl Lib "AVPCL32" (ByVal hdl As Long, ByVal rctl As Long) As Long
+
+Public Const PCL_RCTL_STOP = &H1
+Public Const PCL_RCTL_PLAY = &H2
+Public Const PCL_RCTL_REC = &H3
+Public Const PCL_RCTL_STILL = &H4
+Public Const PCL_RCTL_FFWD = &H5
+Public Const PCL_RCTL_ADV = &H6
+Public Const PCL_RCTL_FREV = &H7
+Public Const PCL_RCTL_BACK = &H8
+Public Const PCL_RCTL_TRIMF = &H10
+Public Const PCL_RCTL_TRIMR = &H11
+Public Const PCL_RCTL_EJECT = &H21
+Public Const PCL_RCTL_EDON = &H24
+Public Const PCL_RCTL_EDOFF = &H25
+
+'****************************************************************************
+
+Declare Function pclRecCtlData Lib "AVPCL32" (ByVal hdl As Long, ByVal rctl As Long, ByVal data As Long) As Long
+
+Public Const PCL_RCTD_VFWD = &H12
+Public Const PCL_RCTD_VREV = &H13
+Public Const PCL_RCTD_JFWD = &H14
+Public Const PCL_RCTD_JREV = &H15
+Public Const PCL_RCTD_SFWD = &H1F
+Public Const PCL_RCTD_SREV = &H20
+Public Const PCL_RCTD_EDPR = &H26
+
+Public Const PCL_EDPR_AUDIO1 = &H1
+Public Const PCL_EDPR_AUDIO2 = &H2
+Public Const PCL_EDPR_AUDIO3 = &H4
+Public Const PCL_EDPR_TIMECODE = &H4
+Public Const PCL_EDPR_AUDIO4 = &H8
+Public Const PCL_EDPR_VIDEO = &H10
+Public Const PCL_EDPR_ASSEMBLE = &H20
+Public Const PCL_EDPR_INSERT = &H40
+
+'****************************************************************************
+
+Declare Function pclRecCtlTc Lib "AVPCL32" (ByVal hdl As Long, ByVal rctl As Long, ByVal time As Long) As Long
+
+Public Const PCL_RCTC_CUEUP = &H16
+Public Const PCL_RCTC_GOTO = &H16
+
+'****************************************************************************
+
+Declare Function pclRecStat Lib "AVPCL32" (ByVal hdl As Long, ByRef stat() As Byte, ByRef ident As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclIoctlError Lib "AVPCL32" () As Long
+
+'****************************************************************************
+
+Declare Function pclLtcSequence Lib "AVPCL32" (ByVal hdl As Long, ByVal lseq As Long) As Long
+
+Public Const PCL_LSEQ_CHECK = &H00
+Public Const PCL_LSEQ_NOCHECK = &H01
+
+'****************************************************************************
+
+Declare Function pclReaderSource Lib "AVPCL32" (ByVal hdl As Long, ByVal rsrc As Long) As Long
+
+Public Const PCL_RSRC_1 = &H01
+Public Const PCL_RSRC_2 = &H02
+
+'****************************************************************************
+
+Declare Function pclSetMixed Lib "AVPCL32" (ByVal hdl As Long, ByVal time As Long, ByVal user As Long, ByVal status As Long, ByVal newd As Long) As Long
+
+'****************************************************************************
+
+Declare Function pclOptGetcmd Lib "AVPCL32" (ByVal hdl As Long, ByRef rctl As Long, ByRef full() As Byte) As Long
+
+Public Const PCL_RCTF_STATS = &HEF
+Public Const PCL_RCTF_NONE = &HFE
+Public Const PCL_RCTF_UNKNOWN = &HFF
+
+'****************************************************************************

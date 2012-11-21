@@ -1,0 +1,96 @@
+#!/bin/bash
+#
+#   script for comfortable start of the PCL-PCI driver
+#
+#   (c) 2005-2007 Alpermann+Velte e.e. GmbH
+#               V 3.36
+#
+#. /etc/rc.status
+#rc_reset
+
+function doSudo() {
+	test $UID -ne 0 &&
+	{
+		echo "running sudo "$0 ""$* " ..."
+		sudo $0 $*
+		exit
+	}
+}
+
+# This is the name of the driver
+DRIVER="avpcl32"
+
+# This is the path where the devicefiles should be created.
+# If you change it, be sure that the library can find
+# the files (see target 'library' in the Makefile).
+DEVICEPATH="/dev/"
+DEVICENAME="avpcl"
+FULLDEVICENAME=${DEVICEPATH}${DEVICENAME}
+
+case $1 in
+	
+	start)
+		echo "starting driver..."
+		if
+# 			does the driver file exist?
+			test ! -f ${DRIVER}.ko
+		then
+			echo "file "${DRIVER}.ko" not found."
+#			rc_failed
+#			rc_status -v1
+			exit
+		fi
+			
+		doSudo $*
+	
+#		load module if not already loaded, exit on failure
+		test '0'`awk -- '/'${DRIVER}'/ {print 1}' /proc/modules` -eq 1 || \
+		/sbin/insmod ${DRIVER}.ko ||
+		exit
+		
+#		get majornumber from /proc/devices
+		MAJOR=`awk -- '/AV PCL-PCI/ {print $1}' /proc/devices`
+		
+#		delete / create nodes
+		for MINOR in 0 1 2 3 4 5 6 7 8 9
+		do
+			rm -f ${FULLDEVICENAME}${MINOR}
+			mknod ${FULLDEVICENAME}${MINOR} c ${MAJOR} ${MINOR}
+			chmod a+rw ${FULLDEVICENAME}${MINOR}
+		done
+#		rc_status -v1
+		echo "done."
+	;;
+	
+	stop)
+		doSudo $*
+
+#		stop driver if listed in /proc/modules
+		test '0'`awk -- '/'${DRIVER}'/ {print 1}' /proc/modules` -eq 1 && /sbin/rmmod ${DRIVER}
+		
+#		delete nodes
+		for MINOR in 0 1 2 3 4 5 6 7 8 9
+		do
+			rm -f ${FULLDEVICENAME}${MINOR}
+		done
+#		rc_status -v1
+	;;
+	
+	status)
+		if
+#			test if driver is listed in /proc/modules	
+			test '0'`awk -- '/'${DRIVER}'/ {print 1}' /proc/modules` -eq 1
+		then
+#			get majornumber
+			MAJOR=`awk -- '/AV PCL-PCI/ {print $1}' /proc/devices`
+			echo "Driver is running at Majornumber "${MAJOR}"."
+		else
+			echo "Driver not running."
+		fi
+	
+	;;
+	
+	*)
+		echo "usage: "$0" start | stop | status"
+	;;
+esac

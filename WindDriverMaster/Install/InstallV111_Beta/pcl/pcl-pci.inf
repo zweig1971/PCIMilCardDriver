@@ -1,0 +1,172 @@
+; <PCL-PCI.inf> Alpermann+Velte DLL for AV-PCL
+; @(#)PCL-PCI.inf 3.36 06/14/2007 (c) 1995-2007 Alpermann+Velte
+
+; INF file for Alpermann+Velte PCL-PCI cards
+; ------------------------------------------
+
+; To use the generated file specify its location to 'Found new hardware wizard'
+; or:
+;     Installation Instruction for Windows 2000/XP
+;     ====================================
+;     Start menu | Settings | Control Panel | System
+;     Tab: Hardware
+;     Click Button: Device Manager
+;     Menu: View | Devices by connection
+;     In Tree: Standard PC | PCI bus | <your card>
+;     Menu: Action | Properties
+;     Tab: Driver
+;     Click Button: Update Driver
+;     In Wizard click button: Next
+;     Radio selection: Search for a suitable driver for my device
+;     Click Button: Next
+;     Check box selection: only "Specify a location"
+;     Click Button: Next
+;     Enter the path: A:\
+;     If the INF file was detected:
+;        Click Button: OK
+;            If a dialog box regarding digital signature appears,  
+;            disregard it and click "next" to continue
+;            If a dialog box asking to enter the path of "windrvr.sys" appears
+;            enter the following path </WINNT/system32/drivers/>
+;     Otherwise
+;        Check box "Install one of the other drivers"
+;        Choose your INF file
+;     Click Button: Next
+;     Click Button: Finish
+;     Reboot
+;     Installation Instruction for Windows 9x/ME
+;     ===================================
+;     Start menu| Settings | Control Panel | System
+;     Tab: Device Manager
+;     Click radio: View devices by connection
+;     In Tree: Computer | Plug and Play BIOS | PCI bus | <your card>
+;     Button: Properties
+;     Tab: Driver
+;     Click Button: Update Driver
+;     Click Button: Next
+;     Click Button: Next
+;     Check box selection: only "Specify a location"
+;     Enter the path: A:\
+;     If the INF file was detected
+;        Click Button: OK
+;            If a dialog box regarding digital signature appears,  
+;            disregard it and click "next" to continue
+;            If a dialog box asking to enter the path of "windrvr.sys" appears
+;            enter the following path </WINNT/system32/drivers/>
+;     Otherwise
+;        Check box "Install one of the other drivers"
+;        Choose your INF file
+;     Click Button: Next
+;     Click Button: Finish
+;     Reboot
+
+; Header
+; ------
+
+[Version]
+Signature = "$CHICAGO$"  ; Represents all Windows OSs
+Class     = Media
+ClassGuid = {4d36e96c-e325-11ce-bfc1-08002be10318}	; Multimedia device
+Provider  = %Mfg%
+DriverVer = 06/14/2007, 3.36.0.0
+
+; Driver information
+; ------------------
+
+[Manufacturer]
+%Mfg% = DeviceList
+
+[DeviceList]
+%DeviceNameLV%  = pcl_pci, PCI\VEN_10B5&DEV_9050&SUBSYS_222110B5
+%DeviceNameD%   = pcl_pci, PCI\VEN_10B5&DEV_9050&SUBSYS_243110B5
+%DeviceNameTS%  = pcl_pci, PCI\VEN_10B5&DEV_9050&SUBSYS_290510B5
+
+%DeviceNameLV3% = pcl_pci, PCI\VEN_10B5&DEV_9030&SUBSYS_286210B5
+%DeviceNameTS3% = pcl_pci, PCI\VEN_10B5&DEV_9030&SUBSYS_290610B5
+%DeviceNameD3%  = pcl_pci, PCI\VEN_10B5&DEV_9030&SUBSYS_294010B5
+%DeviceNameL3%  = pcl_pci, PCI\VEN_10B5&DEV_9030&SUBSYS_302510B5
+%DeviceNameHD3% = pcl_pci, PCI\VEN_10B5&DEV_9030&SUBSYS_306810B5
+
+; Installation section
+; --------------------
+
+[pcl_pci]  ; Installation script for Windows 98/ME
+CopyFiles  = WinDriverCopy, AvPclCopy, InfCopy
+AddReg     = UpDateRegistry
+Log_Config = Base1
+
+[Base1]
+IRQConfig = 3,4,5,7,9,10,11,14,15
+
+[pcl_pci.NT]	; Installation script for Windows NT/2000/XP
+CopyFiles = WinDriverCopy, AvPclCopy, InfCopy
+AddReg    = UpDateRegistry
+
+[WinDriverCopy]
+windrvr.sys,,,0x40  ; 0x40 == COPYFLG_OVERWRITE_OLDER_ONLY
+
+[AvPclCopy]
+avpcl32.dll,,,0x40  ; 0x40 == COPYFLG_OVERWRITE_OLDER_ONLY
+
+[InfCopy]
+wd_virt.inf,,,0x40  ; 0x40 == COPYFLG_OVERWRITE_OLDER_ONLY
+
+[UpDateRegistry]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,windrvr.sys
+
+[ControlFlags]
+ExcludeFromSelect = *  ; Remove all devices listed in this INF file
+    ; from the display shown to the end user (a PNP device shouldn't
+    ; be manually loaded).
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+; Defining WinDriver Service
+; ---------------------------
+
+[pcl_pci.NT.Services]
+Addservice = WinDriver, 2, Service_Info
+
+[Service_Info]
+DisplayName    = %Service_Description%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\windrvr.sys
+
+; Source file information
+; -----------------------
+
+[SourceDisksFiles]
+avpcl32.dll = 1
+windrvr.sys = 1
+wd_virt.inf = 1
+
+[SourceDisksNames]
+1 = %Disk%,,
+
+[DestinationDirs]
+DefaultDestDir = 10
+AvPclCopy      = 11
+WinDriverCopy  = 10, System32\Drivers
+InfCopy        = 10, Inf
+
+; Strings
+; -------
+
+[Strings]
+Service_Description = "WinDriver Kernel Module"
+Mfg                 = "Alpermann+Velte"
+Disk                = "Alpermann+Velte  PCL PCI  Driver Disk"
+DeviceNameLV        = "PCL PCI LV: Timecode Reader Board"
+DeviceNameD         = "PCL PCI D: Timecode Reader Board"
+DeviceNameTS        = "PCI TS: Time Synchronisation Board"
+DeviceNameLV3       = "PCL PCI LV (3.3V/5V): Timecode Reader Board"
+DeviceNameD3        = "PCL PCI D (3.3V/5V): Timecode Reader Board"
+DeviceNameTS3       = "PCI TS (3.3V/5V): Time Synchronisation Board"
+DeviceNameL3        = "PCL PCI L (3.3V/5V): Timecode Reader Board"
+DeviceNameHD3       = "PCL PCI HD (3.3V/5V): Timecode Reader Board"
+
+; eof

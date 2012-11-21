@@ -1,0 +1,415 @@
+Version history of AVPCL DLL
+============================
+
+
+*****************************************************************************
+3.36 ************************************************************************
+*****************************************************************************
+
+Release         : 14.06.2007
+
+- Added new function pclGetThreadHandle()
+
+*****************************************************************************
+3.35 ************************************************************************
+*****************************************************************************
+
+- Added new functions: pclAtcLtcError(), pclAtcVitc1Error(),
+  pclAtcVitc2Error(), pclHancLtcError(), pclHancVitcError().
+
+- Added support for ATC and HANC timecodes in pclReaderEnable().
+
+*****************************************************************************
+3.34 ************************************************************************
+*****************************************************************************
+
+- Added V1/V2 Flags to IntTest and PclTest sample programs.
+
+*****************************************************************************
+3.33 ************************************************************************
+*****************************************************************************
+
+Release         : 21.02.2006
+
+- Fixed a problem with interrupt acknowledge with PCL PCI HD.
+
+*****************************************************************************
+3.32 ************************************************************************
+*****************************************************************************
+
+Release         : 28.06.2005
+
+- Added support for PCL PCI HD.
+
+  WARNING: Previous versions of the driver may cause the computer crash if
+           used with a PCL HD card.
+
+*****************************************************************************
+3.31 ************************************************************************
+*****************************************************************************
+
+Release         : 13.06.2005
+
+- Added Linux support
+
+*****************************************************************************
+3.30 ************************************************************************
+*****************************************************************************
+
+Release         : 22.04.2005
+
+- Added support for PCL PCI L (3V/5V)
+
+*****************************************************************************
+3.29 ************************************************************************
+*****************************************************************************
+
+Release         : 16.08.2004
+
+- Added support for wakeup after standby or hibernate.  All parameters
+  of the card are restored.
+
+*****************************************************************************
+3.28 ************************************************************************
+*****************************************************************************
+
+Release         : 15.12.2003
+
+- Fixed support for PCL PCI D (3V/5V) introduced in Version 3.26.  Only
+  the file "pcl-pci.inf" was changed.
+
+*****************************************************************************
+3.27 ************************************************************************
+*****************************************************************************
+
+Release         : 19.11.2003
+
+- Removed undocumented support for PCL ISA versions
+
+- Added Option "event driven gpi outputs" (PCL_OPT_GPI_OUT)
+
+*****************************************************************************
+3.26 ************************************************************************
+*****************************************************************************
+
+Release         : 30.09.2003
+
+- Added support for PCL PCI D (3V/5V)
+
+*****************************************************************************
+3.25 ************************************************************************
+*****************************************************************************
+
+Release         : 14.07.2003
+
+- Added two PCI TS boards (5V and 3V/5V)
+
+*****************************************************************************
+3.24 ************************************************************************
+*****************************************************************************
+
+Release         : 27.06.2003
+
+- Added "#include <windows.h>" to avpcl.h and removed it from demo programs.
+
+- Changed PclTest and IntTest demo programs.  In case of an error at startup
+  they wait for a keystroke to let the user a chance to read the error
+  message.
+
+- Added support for PCL PCI 3V/5V.
+
+*****************************************************************************
+3.23 ************************************************************************
+*****************************************************************************
+
+Release         : 24.04.2003
+
+- Fixed a problem with Windows 98:  The 'new hardware' wizard doesn't accept
+  wd_virtual.inf although it's on the driver disk.  The file is renamed to
+  wd_virt.inf what is compatible the 8.3 name scheme.
+
+*****************************************************************************
+3.22 ************************************************************************
+*****************************************************************************
+
+Release         : 11.03.2003
+
+- Fixed a problem with Windows 2000:  After installing the driver and reboot,
+  a "Windriver virtual device" is found.  Now it is installed automatically.
+  This is handled by the file wd_virtual.inf, what is copied to \winnt\inf
+  by pcl-pci.inf.
+
+*****************************************************************************
+3.21 ************************************************************************
+*****************************************************************************
+
+Release         : 07.03.2003
+
+- PclTest and IntTest call pclReset() at startup.
+
+- Changed PCL-PCI.INF to support Windows 98.
+
+- Cleanup and added missing declarations in avpcl.pas.
+
+- Corrected some typos and added missing declarations in avpcl32.txt.
+
+*****************************************************************************
+3.20 ************************************************************************
+*****************************************************************************
+
+Release         : 29.01.2003
+
+- Dropped support for Windows 95, because it doesn't support WDM drivers.
+
+- Changed WinDriver from 5.05b to 5.22b to avoid blue screens with some
+  installations of Windows 2000.  The file wdpnp.sys is no longer needed.
+
+- Changed the ClassGuid in PCL-PCI.INF.  A group "Alpermann+Velte" is no
+  longer created in the device manager.  Now you'll find the PCL PCI cards
+  in the group "Multimedia", or in "Audio, Video and Game Controllers".
+
+*****************************************************************************
+3.18 ************************************************************************
+*****************************************************************************
+
+Release         : 28.08.2002
+
+- Added new parameter PCL_IMODE_POR to pclReset().  With that, a hardware
+  reset is sent to the PCL board.
+
+- Changed WinDriver from 5.04 to 5.05b to support Windows 2000 SP3.
+
+- Added new functions 	pclGetDriverInformation(@78), pclGetIdata (@79) and
+  pclGetPdata(@80), to get the internal state of a PCL-CPI more detailed.
+  The new functions are not needed for normal operation.
+
+- Added definitions of PCL_BASE_PCI_5 to PCL_BASE_PCI_10 in file AVPCL.H and
+  increased definition of PCL_BASE_PCI_LAST to PCL_BASE_PCI_10, to make it
+  possible to use up to 10 PCL-PCI cards simultaneously.
+
+*****************************************************************************
+3.17 ************************************************************************
+*****************************************************************************
+
+Release         : 28.06.2002
+
+- Added a 10ms delay to the main loop of PclTest, to reduce its CPU usage.
+
+*****************************************************************************
+3.16 ************************************************************************
+*****************************************************************************
+
+Release         : 21.03.2002
+
+Solved bugs
+-----------
+
+- Fixed problem while simultaneously accessing multiple PCL PCI cards of
+  different type (D or LV).
+
+*****************************************************************************
+3.15 ************************************************************************
+*****************************************************************************
+
+Release         : 13.12.2001
+
+New Features
+------------
+
+- Changed calculation of NTSC realtime for PC-TS (PCI).  The new method
+  eleminates the 86ms time offset at midnight.
+
+*****************************************************************************
+3.14 ************************************************************************
+*****************************************************************************
+
+Release         : 12.12.2001
+
+New Features
+------------
+
+- Added support for NTSC version of PC-TS (PCI).
+
+*****************************************************************************
+3.12 ************************************************************************
+*****************************************************************************
+
+Release         : 05.11.2001
+
+New Features
+------------
+
+- More detailed error message, if no interrupt line was assigned to the card.
+
+*****************************************************************************
+3.11 ************************************************************************
+*****************************************************************************
+
+Release         : 08.10.2001
+
+New Features
+------------
+
+- Added support for PCL PCI D.
+
+- Added new functions: pclVitcLevelControl(), pclLtcError(), pclVitcError(),
+  pclFlyWheel(), pclLtcFrames(), pclVitcFrames().
+
+*****************************************************************************
+3.10 ************************************************************************
+*****************************************************************************
+
+Release         : 27.08.2001
+
+Solved bugs
+-----------
+
+- With Windows NT 4.0, SETUP.EXE was not able to copy the driver files to
+  the Windows directory.  Fixed.
+
+*****************************************************************************
+3.09 ************************************************************************
+*****************************************************************************
+
+Release         : 20.07.2001
+
+Solved bugs
+-----------
+
+- Changed pclOpen() parameter 'base' from "word" to PCL_INT in AVPCL.PAS.
+
+- Masked pclOpen() parameter 'base' with 0xffff to set the upper word
+  to 0x0000.
+
+*****************************************************************************
+3.08.1 **********************************************************************
+*****************************************************************************
+
+Release         : 03.07.2001
+
+Solved bugs
+-----------
+
+- Setupapi.dll is not longer needed by avpcl32.dll.
+
+- With Windows 95/98/ME the driver files were not copied to the windows
+  directory and the VxD registry entry was not set.  The reason was an error
+  in PCL-PCI.INF.
+
+*****************************************************************************
+3.08 ************************************************************************
+*****************************************************************************
+
+Release         : 03.07.2001
+
+Solved bugs
+-----------
+
+- With Windows 2000, on some machines interrupts didn't work.  The reason
+  was an error in PCL-PCI.INF.
+
+  Note:  If you installed a previous driver version and want to update
+  to this version, you have to remove the old INF file from the \winnt\inf
+  directory.  If not, Windows will always use that old INF file and
+  never use the new one.  You find the INF file by searching the string
+  "velte" in the contens of the files in the \winnt\inf directory.  Usually
+  you'll find a file named oem?.inf, with ? is a digit in the range 0 to 9.
+  After deleting this file, use the device manager to update the driver.
+
+*****************************************************************************
+3.07 ************************************************************************
+*****************************************************************************
+
+Release         : 30.05.2001
+
+New Features
+------------
+
+- Improved SETUP.EXE for installation under Windows NT 4.0.  It now uses
+  PCL-PCI.inf to do its job.
+
+- Implemented pclGetRealtime() and pclSetRealtimeMode() for PCL-PCI TimeSync.
+
+*****************************************************************************
+3.06 ************************************************************************
+*****************************************************************************
+
+Release         : 15.03.2001
+
+New Features
+------------
+
+- New function pclSetIntPriority() to set the priority of the interrupt
+  handler thread.
+
+*****************************************************************************
+3.05 ************************************************************************
+*****************************************************************************
+
+Release         : 08.02.2001
+
+Solved bugs
+-----------
+
+- With Windows NT 4.0 the setup program didn't install the driver.  It only
+  displayed a message that the program can't start with the -vxd option
+  under Windows NT.
+
+*****************************************************************************
+3.04 ************************************************************************
+*****************************************************************************
+
+Release         : 11.01.2001
+
+New Features
+------------
+
+- Enhanced pclOpen() to load Windriver, if this not has done by Windows.
+  This is true immediately after the driver has been installed with
+  Windows 95.
+
+- With Windows 98 and ME, the VxD version of WinDriver is used, rather
+  than the SYS version.
+
+- Improved installation procedure.  With the PnP Windows versions 95, 98,
+  ME and 2000, Setup.exe is not longer needed.  Driver installation is
+  completely handled by PCL-PCI.INF.  With Windows NT 4.0, the INF file
+  is not needed, but Setup.exe has to be started to do the installation.
+
+*****************************************************************************
+3.03 ************************************************************************
+*****************************************************************************
+
+Release         : 11.12.2000
+
+Solved bugs
+-----------
+
+- On Windows 2000 added support to service pack 1 by updating
+  windrvr.[sys|vxd] to version 4.33.
+
+*****************************************************************************
+3.02 ************************************************************************
+*****************************************************************************
+
+Release         : 20.11.2000
+
+- PclTest and IntTest show special version informations.
+
+New Features
+------------
+
+- pclGetVersion() always returns a value for 'dll', even if the pcl card was
+  not found and the function returns an error.
+
+Solved bugs
+-----------
+
+- PclTest.cpp: Fixed call to pclVitcSetup() and pclPriority(): Wrong warning
+  code ("New Data") was displayed if the calls didn't return PCL_OK.
+
+*****************************************************************************
+3.01 ************************************************************************
+*****************************************************************************
+
+Release         : 02.11.2000

@@ -1,0 +1,112 @@
+;/**********************************************************************\
+;*																		*
+;*	Windows DLL AVPCL.DLL												*
+;*																		*
+;*	Copyright (c) 1995-2007 by Alpermann+Velte							*
+;*																		*
+;\**********************************************************************/
+
+;/* <AvPcl32.def> Alpermann+Velte DLL for AV-PCL */
+;/* @(#)AvPcl32.def 3.36 06/14/2007 (c) 1995-2007 Alpermann+Velte
+
+LIBRARY		AVPCL32		; application's module name
+
+DESCRIPTION	'@(#)avpcl32.def 3.36 06/14/2007 (c) 1995-2007 Alpermann+Velte'
+
+EXPORTS
+	pclOpen					@2
+	pclClose				@3
+	pclRawCommand			@4
+	pclReset				@5
+	pclDataReq				@6
+	pclIntMask				@7
+	pclSetIntMask			@8
+	pclResetIntMask			@9
+	pclReaderEnable			@10
+	pclMixedEnable			@11
+	pclPriority				@12
+	pclTcFrames				@13
+	pclCtlRate				@14
+	pclCtlCount				@15
+	pclCtlMode				@16
+	pclCtlReset				@17
+	pclCtlPreset			@18
+	pclCtlDir				@19
+	pclEventTime			@20
+	pclEventUser			@21
+	pclTranBank				@22
+	pclSioCmd				@23
+	pclSioCtl				@24
+	pclRecMode				@25
+	pclTranStr				@26
+	pclTranData				@27
+	pclModeOut				@28
+	pclOutPort				@29
+	pclPortHigh				@30
+	pclPortLow				@31
+	pclPosPulse				@32
+	pclNegPulse				@33
+	pclPosPulseOut			@34
+	pclNegPulseOut			@35
+	pclPulseWidth			@36
+	pclAnalogOut			@37
+	pclShiftData			@38
+	pclShiftWidth			@39
+	pclShiftMode			@40
+	pclRecCtl				@41
+	pclRecCtlData			@42
+	pclRecCtlTc				@43
+	pclRecStat				@44
+	pclGetTc				@45
+	pclGetUser				@46
+	pclGetRegister			@47
+	pclGetRegSync			@48
+	pclBcd2Tc				@49
+	pclTc2Bcd				@50
+	pclGetEvent				@51
+	pclGetTransfer			@52
+	pclGetIo				@53
+	pclGetSio				@54
+	pclResetTrans			@55
+	pclGetSerIn				@56
+	pclGetShift				@57
+	pclGetTrans				@58
+	pclGetVersion			@59
+	pclTc2Frames			@60
+	pclIoctlError			@61
+	pclGetBaseAddress		@62
+	pclLtcSequence			@63
+	pclReaderSource			@64
+	pclVitcSetup			@65
+	pclGetVerSpecial		@66
+	pclSetMixed				@67
+	pclGetErrorString		@68
+	pclSetIntHandler		@69
+	pclIntAck				@70
+	pclSetIntPriority		@71
+	pclVitcLevelControl		@72
+	pclLtcError				@73
+	pclVitcError			@74
+	pclFlyWheel				@75
+	pclLtcFrames			@76
+	pclVitcFrames			@77
+
+	pclGetDriverInformation	@78
+	pclGetIdata				@79
+	pclGetPdata				@80
+	pclSetGpiEventTime		@81
+	pclGetGpiEventStatus	@82
+	pclGetXdata				@83
+	pclGetRegStatus			@84
+
+	pclAtcLtcError			@85
+	pclAtcVitc1Error		@86
+	pclAtcVitc2Error		@87
+	pclHancLtcError			@88
+	pclHancVitcError		@89
+
+	pclGetThreadHandle		@90
+
+	pclOptGetcmd			@100
+	pclGetRealtime			@102
+	pclSetRealtimeMode		@103

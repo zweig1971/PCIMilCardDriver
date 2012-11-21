@@ -1,0 +1,53 @@
+<html>
+<body>
+<pre>
+<h1>Erstellungsprotokoll</h1>
+<h3>
+--------------------Konfiguration: windows_test - Win32 Debug--------------------
+</h3>
+<h3>Befehlszeilen</h3>
+Creating command line "rc.exe /l 0x407 /fo"Debug/windows_test.res" /d "_DEBUG" "G:\myWindriver\Install_WinDriver10\windows_test.rc"" 
+Erstellen der temporären Datei  "E:\TEMP\RSP1C7.tmp" mit Inhalten
+[
+/nologo /MLd /W3 /GX /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/windows_test.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD / /c 
+"G:\myWindriver\Install_WinDriver10\driverinstall.cpp"
+"G:\myWindriver\Install_WinDriver10\driverload.cpp"
+"G:\myWindriver\Install_WinDriver10\windows_test.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSP1C7.tmp" 
+Erstellen der temporären Datei  "E:\TEMP\RSP1C8.tmp" mit Inhalten
+[
+/nologo /MLd /W3 /GX /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/windows_test.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD / /c 
+"G:\myWindriver\Install_WinDriver10\StdAfx.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSP1C8.tmp" 
+Erstellen der temporären Datei  "E:\TEMP\RSP1C9.tmp" mit Inhalten
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/windows_test.pdb" /debug /machine:I386 /out:"Debug/windows_test.exe" /pdbtype:sept 
+.\Debug\driverinstall.obj
+.\Debug\driverload.obj
+.\Debug\StdAfx.obj
+.\Debug\windows_test.obj
+.\Debug\windows_test.res
+]
+Erstellen der Befehlzeile "link.exe @E:\TEMP\RSP1C9.tmp"
+<h3>Ausgabefenster</h3>
+Ressourcen werden kompiliert...
+Kompilierung läuft...
+Befehlszeilenwarnung D4002 : Unbekannte Option '/' wird ignoriert
+StdAfx.cpp
+Kompilierung läuft...
+Befehlszeilenwarnung D4002 : Unbekannte Option '/' wird ignoriert
+driverinstall.cpp
+driverload.cpp
+windows_test.cpp
+Generieren von Code...
+Linker-Vorgang läuft...
+
+
+
+<h3>Ergebnisse</h3>
+windows_test.exe - 0 Fehler, 0 Warnung(en)
+</pre>
+</body>
+</html>

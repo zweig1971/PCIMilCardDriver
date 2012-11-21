@@ -1,0 +1,47 @@
+( PCIMilTreiberS.dll 
+MILDRIVER_Version_0p01VBS_300304@@YGXXZ 
+************************
+_MILDRIVER_VersionNr@4 
+_PCI_CntrlRegRead@12 
+_PCI_CntrlRegSet@12 
+_PCI_DriverClose@4 
+_PCI_DriverOpen@4 
+_PCI_ErrorString@8 
+_PCI_EvFiFioClear@8 
+_PCI_EvFiFoRead@16 
+_PCI_EvFilterClear@8 
+_PCI_EvFilterRead@16 
+_PCI_EvFilterSet@16 
+_PCI_EvTimerRead@12 
+_PCI_IntAktiv@12 
+_PCI_IntDisable@8 
+_PCI_IntEnable@20 
+_PCI_IntMaskRead@12 
+_PCI_IntMaskWrite@12 
+_PCI_IntNextEnable@8 
+_PCI_IntWait@12 
+_PCI_IntWaitStop@8 
+_PCI_MilBusCMDWrite@12 
+_PCI_MilBusRead@16 
+_PCI_MilBusWrite@12 
+_PCI_PCIcardCount@0 
+_PCI_PCIcardReset@8 
+_PCI_PulsOutSet@28 
+_PCI_SoftPuls1Start@8 
+_PCI_SoftPuls1Stop@8 
+_PCI_SoftPuls2Start@8 
+_PCI_SoftPuls2Stop@8 
+_PCI_SoftPuls3Start@8 
+_PCI_SoftPuls3Stop@8 
+_PCI_SoftPuls4Start@8 
+_PCI_SoftPuls4Stop@8 
+_PCI_SoftPuls5Start@8 
+_PCI_SoftPuls5Stop@8 
+_PCI_StatusRegRead@12 
+_PCI_StatusTest@12 
+_PCI_TimerSet@16 
+_PCI_TimerWait@16  
+***************************
+$p WinDriver V4.33
+Jungo (c)2000 
+Version 0.01VBS\                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          

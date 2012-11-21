@@ -1,0 +1,52 @@
+<html>
+<body>
+<pre>
+<h1>Erstellungsprotokoll</h1>
+<h3>
+--------------------Konfiguration: windows_test - Win32 Debug--------------------
+</h3>
+<h3>Befehlszeilen</h3>
+Creating command line "rc.exe /l 0x407 /fo"Debug/windows_test.res" /d "_DEBUG" "G:\myTest\Install_WinDriver\windows_test.rc"" 
+Erstellen der temporären Datei  "E:\TEMP\RSP2F.tmp" mit Inhalten
+[
+/nologo /MLd /W3 /Gm /GX /ZI /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/windows_test.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\myTest\Install_WinDriver\driverinstall.cpp"
+"G:\myTest\Install_WinDriver\driverload.cpp"
+"G:\myTest\Install_WinDriver\windows_test.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSP2F.tmp" 
+Erstellen der temporären Datei  "E:\TEMP\RSP30.tmp" mit Inhalten
+[
+/nologo /MLd /W3 /Gm /GX /ZI /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/windows_test.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\myTest\Install_WinDriver\StdAfx.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSP30.tmp" 
+Erstellen der temporären Datei  "E:\TEMP\RSP31.tmp" mit Inhalten
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/windows_test.pdb" /debug /machine:I386 /out:"Debug/windows_test.exe" /pdbtype:sept 
+.\Debug\driverinstall.obj
+.\Debug\driverload.obj
+.\Debug\StdAfx.obj
+.\Debug\windows_test.obj
+.\Debug\windows_test.res
+]
+Erstellen der Befehlzeile "link.exe @E:\TEMP\RSP31.tmp"
+<h3>Ausgabefenster</h3>
+Ressourcen werden kompiliert...
+Kompilierung läuft...
+StdAfx.cpp
+Kompilierung läuft...
+driverinstall.cpp
+driverload.cpp
+windows_test.cpp
+G:\myTest\Install_WinDriver\windows_test.cpp(187) : warning C4101: 'result' : Unreferenzierte lokale Variable
+Generieren von Code...
+Linker-Vorgang läuft...
+
+
+
+<h3>Ergebnisse</h3>
+windows_test.exe - 0 Fehler, 1 Warnung(en)
+</pre>
+</body>
+</html>

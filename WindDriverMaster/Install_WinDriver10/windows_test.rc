@@ -1,0 +1,207 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Deutsch (Deutschland) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_GSI_big             ICON    DISCARDABLE     "windows_test.ICO"
+IDI_GSI_small           ICON    DISCARDABLE     "SMALL.ICO"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDC_WINDOWS_TEST ACCELERATORS MOVEABLE PURE 
+BEGIN
+    "?",            IDM_ABOUT,              ASCII,  ALT
+    "/",            IDM_ABOUT,              ASCII,  ALT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_Installing DIALOG DISCARDABLE  22, 17, 144, 39
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+CAPTION "Installing..."
+FONT 8, "System"
+BEGIN
+    CTEXT           "Please wait Installing...",IDC_Installing,25,8,92,11
+END
+
+IDD_StartMenue DIALOGEX 0, 0, 187, 100
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Install WinDriver & Dll"
+FONT 8, "System"
+BEGIN
+    LTEXT           "Darmstadt     Install Version 1.0",IDC_Titel1,55,27,106,
+                    14,SS_CENTERIMAGE,WS_EX_TRANSPARENT
+    ICON            IDI_GSI_big,IDC_MYICON,36,19,20,20,SS_CENTERIMAGE
+    PUSHBUTTON      "Abbruch",IDC_Abbruch,132,73,48,12
+    PUSHBUTTON      "Install",IDC_Install,7,74,48,11
+    CTEXT           "for WinNT / 2000 only",IDC_Titel2,41,42,110,14
+    PUSHBUTTON      "Uninstall",IDC_Uninstall,69,74,48,11
+END
+
+IDD_Uninstall DIALOG DISCARDABLE  0, 0, 143, 33
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Uninstall"
+FONT 8, "System"
+BEGIN
+    CTEXT           "Uninstalling Please wait....",IDC_Uninstalling,21,7,98,
+                    17
+END
+
+IDD_FailureBox DIALOG DISCARDABLE  0, 0, 151, 46
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Failure"
+FONT 8, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,51,22,50,14
+    CTEXT           "Failure !",IDC_FailureTXT,7,7,137,12
+END
+
+IDD_SuccessfulBox DIALOG DISCARDABLE  0, 0, 152, 49
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Successful  "
+FONT 8, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,46,23,50,14
+    CTEXT           "Successful !  ",IDC_Successful,23,7,98,13
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""resource.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_Installing, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 28
+    END
+
+    IDD_StartMenue, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 93
+    END
+
+    IDD_Uninstall, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 136
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 26
+    END
+
+    IDD_FailureBox, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 144
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 39
+    END
+
+    IDD_SuccessfulBox, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 145
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 42
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_APP_TITLE           "PCI -Mil- Treiber Installation"
+    IDS_HELLO               "Hallo Welt!"
+    IDC_WINDOWS_TEST        "WINDOWS_TEST"
+END
+
+#endif    // Deutsch (Deutschland) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

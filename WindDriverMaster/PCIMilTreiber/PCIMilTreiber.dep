@@ -1,0 +1,48 @@
+# Microsoft Developer Studio Generated Dependency File, included by PCIMilTreiber.mak
+
+.\main.cpp : \
+	".\bits.h"\
+	".\main.h"\
+	".\MilDriver.h"\
+	".\mildriverdef.h"\
+	".\mydriver_lib.h"\
+	".\pci_regs.h"\
+	".\windrvr.h"\
+	".\windrvr_usb.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\MilDriver.cpp : \
+	".\bits.h"\
+	".\MilDriver.h"\
+	".\mildriverdef.h"\
+	".\mydriver_lib.h"\
+	".\pci_diag_lib.h"\
+	".\pci_regs.h"\
+	".\privatmildriverdef.h"\
+	".\windrvr.h"\
+	".\windrvr_usb.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\mydriver_diag.c : \
+	".\bits.h"\
+	".\mildriverdef.h"\
+	".\mydriver_lib.h"\
+	".\pci_diag_lib.h"\
+	".\pci_regs.h"\
+	".\windrvr.h"\
+	".\windrvr_usb.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\mydriver_lib.c : \
+	".\bits.h"\
+	".\mildriverdef.h"\
+	".\mydriver_lib.h"\
+	".\pci_regs.h"\
+	".\windrvr.h"\
+	".\windrvr_int_thread.h"\
+	".\windrvr_usb.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
